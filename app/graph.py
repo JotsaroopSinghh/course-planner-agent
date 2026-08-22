@@ -22,6 +22,50 @@ def satisfies(rule, completed: set) -> bool:
 def is_eligible(course_code: str, completed: set, courses: dict) -> bool:
     return satisfies(courses[course_code]["prereqs"], completed)
 
+
+def _missing_rule(rule, completed: set):
+    # mirrors satisfies() but instead of a bool, builds up a structure describing
+    # what's still needed - None means this rule is already satisfied.
+    # for "or", only report it as missing if NO branch is done yet, and when that
+    # happens we recurse into every branch so partially-done branches still show
+    # what they'd need (handles nested cases like (A AND B) OR C)
+    if isinstance(rule, str):
+        return None if rule in completed else {"type": "course", "course": rule}
+    if "course" in rule:
+        course = rule["course"]
+        return None if course in completed else {"type": "course", "course": course}
+    if "and" in rule:
+        missing = [m for m in (_missing_rule(r, completed) for r in rule["and"]) if m is not None]
+        return {"type": "all_of", "missing": missing} if missing else None
+    if "or" in rule:
+        options = [_missing_rule(r, completed) for r in rule["or"]]
+        if any(o is None for o in options):
+            return None  # at least one alternative is already satisfied
+        return {"type": "one_of", "options": options}
+    raise ValueError(f"unknown rule type: {rule}")
+
+
+def missing_prerequisites(course_code: str, completed: set, courses: dict) -> dict:
+    if course_code not in courses:
+        return {"course": course_code, "known": False, "satisfied": False, "missing": None}
+
+    missing = _missing_rule(courses[course_code]["prereqs"], completed)
+    return {
+        "course": course_code,
+        "known": True,
+        "satisfied": missing is None,
+        "missing": missing,
+    }
+
+
+def eligible_courses(completed: set, courses: dict) -> list:
+    # sorted 
+    return sorted(
+        code for code in courses
+        if code not in completed and is_eligible(code, completed, courses)
+    )
+
+
 def collect_course_codes(rule) -> set:
     # walks the rule tree and just grabs every course code in it,
     # doesn't care about and/or logic, just need the flat list
