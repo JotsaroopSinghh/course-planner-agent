@@ -9,6 +9,7 @@ from app.graph import (
     load_courses,
     requirement_status,
 )
+from app.planner import plan_to_course
 from app.profile import StudentProfile, normalize_course_code
 
 
@@ -123,6 +124,28 @@ TOOLS = [
                 "course_code": {
                     "type": "string",
                     "description": "The course code to look up, e.g. 'CMPUT 272'.",
+                },
+            },
+            "required": ["course_code"],
+        },
+    },
+    {
+        "type": "function",
+        "name": "plan_to_course",
+        "description": (
+            "Build a deterministic prerequisite path toward a supported target "
+            "course using the student's completed and current courses. "
+            "Use this for questions about how to reach or prepare for a course."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "course_code": {
+                    "type": "string",
+                    "description": (
+                        "The target course code to plan toward, "
+                        "e.g. 'CMPUT 469'."
+                    ),
                 },
             },
             "required": ["course_code"],
@@ -251,6 +274,23 @@ def _handle_get_dependent_courses(
     }
 
 
+def _handle_plan_to_course(
+    args: dict,
+    profile: StudentProfile,
+    courses: dict,
+    unlocks: dict,
+) -> dict:
+    course_code = normalize_course_code(
+        args.get("course_code", "")
+    )
+
+    return plan_to_course(
+        course_code,
+        profile,
+        courses,
+    )
+
+
 # Keeping dispatch in one table makes adding another deterministic tool
 # independent from the Gemini interaction loop.
 TOOL_HANDLERS = {
@@ -259,6 +299,7 @@ TOOL_HANDLERS = {
     "get_missing_requirements": _handle_get_missing_requirements,
     "get_eligible_courses": _handle_get_eligible_courses,
     "get_dependent_courses": _handle_get_dependent_courses,
+    "plan_to_course": _handle_plan_to_course,
 }
 
 

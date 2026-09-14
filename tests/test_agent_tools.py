@@ -65,6 +65,26 @@ class AgentToolTests(unittest.TestCase):
         )
         self.assertEqual(result["dependent_courses"], ["B 200"])
 
+    def test_plan_to_course_uses_profile_and_graph(self):
+            empty_profile = StudentProfile()
+
+            result = _run_tool_call(
+                "plan_to_course",
+                {"course_code": "C 300"},
+                empty_profile,
+                self.courses,
+                self.unlocks,
+            )
+
+            self.assertTrue(result["known"])
+            self.assertEqual(
+                result["prerequisite_plan"],
+                ["A 100", "B 200"],
+            )
+            self.assertEqual(
+                result["corequisites"]["missing"]["course"],
+                "LAB 300",
+            )
     def test_unknown_and_malformed_tool_calls_return_errors(self):
         unknown = _run_tool_call("not_a_tool", {}, self.profile, self.courses, self.unlocks)
         malformed = _run_tool_call(
