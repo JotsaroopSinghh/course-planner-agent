@@ -1,0 +1,8 @@
+{
+    "CMPUT 175": {"title": "Intro to Foundations of Computation I", "units": 3, "prereqs": {"and": []}},
+    "CMPUT 272": {"title": "Formal Systems and Logic", "units": 3, "prereqs": {"and": []}},
+    "CMPUT 204": {"title": "Algorithms I", "units": 3, "prereqs": {"and": [{"or": ["CMPUT 175", "CMPUT 275"]}, {"course": "CMPUT 272"}]}},
+    "CMPUT 291": {"title": "File and Database Management", "units": 3, "prereqs": {"and": [{"course": "CMPUT 204"}]}},
+    "CMPUT 267": {"title": "Machine Learning I", "units": 3, "prereqs": {"and": [{"course": "MATH 125"}]}},
+    "MATH 125": {"title": "Linear Algebra I", "units": 3, "prereqs": {"and": []}}
+  }
