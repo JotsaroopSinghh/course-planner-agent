@@ -29,6 +29,7 @@ Eligibility means only that the prerequisite and corequisite rules represented i
 Never use your own memory or general knowledge to make factual claims about prerequisites, corequisites, or eligibility.
 
 Use the appropriate tool before answering a course-specific requirement or eligibility question.
+For questions about how to reach, prepare for, or work toward a target course, use plan_to_course. A successful plan_to_course result already contains the deterministic prerequisite path, external requirements, and target corequisite status. Answer directly from that result. Do not call other requirement tools just to re-check or expand the plan unless the user explicitly asks for those additional details.
 
 If the requested course is not present in the dataset, clearly state that it is not currently supported in this dataset.
 
@@ -133,9 +134,11 @@ TOOLS = [
         "type": "function",
         "name": "plan_to_course",
         "description": (
-            "Build a deterministic prerequisite path toward a supported target "
-            "course using the student's completed and current courses. "
-            "Use this for questions about how to reach or prepare for a course."
+            "Build the complete deterministic prerequisite path toward a supported "
+            "target course using the student's completed and current courses. "
+            "Use this for questions about how to reach, prepare for, or work toward "
+            "a course. The returned plan is sufficient to answer the planning "
+            "question without re-checking it with other requirement tools."
         ),
         "parameters": {
             "type": "object",
