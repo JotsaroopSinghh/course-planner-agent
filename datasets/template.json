@@ -1,0 +1,22 @@
+{
+  "CS 101": {
+    "title": "Introduction to Computing",
+    "units": 3,
+    "prereqs": {"and": []},
+    "source": "https://example.edu/catalogue/cs101",
+    "verified": "YYYY-MM-DD"
+  },
+  "CS 201": {
+    "title": "Data Structures",
+    "units": 3,
+    "prereqs": {
+      "and": [
+        "CS 101",
+        {"or": ["MATH 100", "MATH 110"]}
+      ]
+    },
+    "coreqs": {"or": ["CS 200", "CS 210"]},
+    "source": "https://example.edu/catalogue/cs201",
+    "verified": "YYYY-MM-DD"
+  }
+}
