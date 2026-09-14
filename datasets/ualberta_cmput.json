@@ -1,8 +1,170 @@
 {
-    "CMPUT 175": {"title": "Intro to Foundations of Computation I", "units": 3, "prereqs": {"and": []}},
-    "CMPUT 272": {"title": "Formal Systems and Logic", "units": 3, "prereqs": {"and": []}},
-    "CMPUT 204": {"title": "Algorithms I", "units": 3, "prereqs": {"and": [{"or": ["CMPUT 175", "CMPUT 275"]}, {"course": "CMPUT 272"}]}},
-    "CMPUT 291": {"title": "File and Database Management", "units": 3, "prereqs": {"and": [{"course": "CMPUT 204"}]}},
-    "CMPUT 267": {"title": "Machine Learning I", "units": 3, "prereqs": {"and": [{"course": "MATH 125"}]}},
-    "MATH 125": {"title": "Linear Algebra I", "units": 3, "prereqs": {"and": []}}
+  "CMPUT 174": {
+    "title": "Introduction to the Foundations of Computation I",
+    "units": 3,
+    "prereqs": {"or": ["MATH 30", "MATH 30-1", "MATH 30-2"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/174",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 175": {
+    "title": "Introduction to the Foundations of Computation II",
+    "units": 3,
+    "prereqs": {"or": ["CMPUT 174", "ENCMP 100"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/175",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 201": {
+    "title": "Practical Programming Methodology",
+    "units": 3,
+    "prereqs": "CMPUT 175",
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/201",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 204": {
+    "title": "Algorithms I",
+    "units": 3,
+    "prereqs": {
+      "and": [
+        {"or": ["CMPUT 175", "CMPUT 275"]},
+        "CMPUT 272",
+        {"or": ["MATH 100", "MATH 114", "MATH 117", "MATH 134", "MATH 144", "MATH 154"]}
+      ]
+    },
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/204",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 229": {
+    "title": "Computer Organization and Architecture I",
+    "units": 3,
+    "prereqs": {"or": ["CMPUT 201", "CMPUT 275"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/229",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 261": {
+    "title": "Introduction to Artificial Intelligence",
+    "units": 3,
+    "prereqs": {"or": ["STAT 151", "STAT 161", "STAT 181", "STAT 235", "STAT 265", "SCI 151", "MATH 181"]},
+    "coreqs": {"or": ["CMPUT 204", "CMPUT 275"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/261",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 267": {
+    "title": "Machine Learning I",
+    "units": 3,
+    "prereqs": {
+      "and": [
+        {"or": ["CMPUT 174", "CMPUT 274", "ENCMP 100"]},
+        {"or": ["MATH 100", "MATH 114", "MATH 117", "MATH 134", "MATH 144", "MATH 154"]}
+      ]
+    },
+    "coreqs": {
+      "and": [
+        {"or": ["CMPUT 175", "CMPUT 275"]},
+        "CMPUT 272",
+        {"or": ["MATH 102", "MATH 125", "MATH 126", "MATH 127"]},
+        {"or": ["STAT 151", "STAT 161", "STAT 181", "STAT 235", "STAT 265", "SCI 151", "MATH 181"]}
+      ]
+    },
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/267",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 272": {
+    "title": "Formal Systems and Logic in Computing Science",
+    "units": 3,
+    "prereqs": {"or": ["CMPUT 101", "CMPUT 174", "CMPUT 175", "CMPUT 274", "SCI 100", "ENCMP 100"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/272",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 274": {
+    "title": "Accelerated Introduction to the Foundations of Computation I",
+    "units": 3,
+    "prereqs": "MATH 30-1",
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/274",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 275": {
+    "title": "Accelerated Introduction to the Foundations of Computation II",
+    "units": 3,
+    "prereqs": "CMPUT 274",
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/275",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 291": {
+    "title": "Introduction to File and Database Management",
+    "units": 3,
+    "prereqs": {"and": [{"or": ["CMPUT 175", "CMPUT 274"]}, "CMPUT 272"]},
+    "coreqs": {"or": ["CMPUT 201", "CMPUT 275"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/291",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 301": {
+    "title": "Introduction to Software Engineering",
+    "units": 3,
+    "prereqs": {"or": ["CMPUT 201", "CMPUT 275"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/301",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 365": {
+    "title": "Introduction to Reinforcement Learning",
+    "units": 3,
+    "prereqs": {
+      "and": [
+        {"or": ["CMPUT 175", "CMPUT 275"]},
+        {"or": ["CMPUT 267", "CMPUT 466", "STAT 265"]}
+      ]
+    },
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/365",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 366": {
+    "title": "Search and Planning in Artificial Intelligence",
+    "units": 3,
+    "prereqs": {"and": [{"or": ["CMPUT 204", "CMPUT 275"]}, "CMPUT 272"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/366",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 379": {
+    "title": "Operating System Concepts",
+    "units": 3,
+    "prereqs": {
+      "and": [
+        {"or": [{"and": ["CMPUT 201", "CMPUT 204"]}, "CMPUT 275"]},
+        {"or": ["CMPUT 229", "E E 380", "ECE 212"]}
+      ]
+    },
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/379",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 391": {
+    "title": "Database Management Systems",
+    "units": 3,
+    "prereqs": {
+      "and": [
+        {"or": [{"and": ["CMPUT 201", "CMPUT 204"]}, "CMPUT 275"]},
+        "CMPUT 291"
+      ]
+    },
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/391",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 404": {
+    "title": "Web Applications and Architecture",
+    "units": 3,
+    "prereqs": {"and": ["CMPUT 291", "CMPUT 301"]},
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/404",
+    "verified": "2026-09-13"
+  },
+  "CMPUT 469": {
+    "title": "Artificial Intelligence Capstone",
+    "units": 3,
+    "prereqs": {
+      "and": [
+        "CMPUT 365",
+        {"or": ["CMPUT 261", "CMPUT 366"]},
+        {"or": ["CMPUT 466", "CMPUT 467"]}
+      ]
+    },
+    "source": "https://apps.ualberta.ca/catalogue/course/cmput/469",
+    "verified": "2026-09-13"
   }
+}
